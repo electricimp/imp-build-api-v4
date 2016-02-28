@@ -1,0 +1,35 @@
+{
+  "name": "imp-build-api-v4",
+  "version": "1.0.0-dev",
+  "description": "Electric Imp Build API v4 Client",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node_modules/jasmine/bin/jasmine.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/electricimp/imp-build-api-v4.git"
+  },
+  "keywords": [
+    "electric",
+    "imp",
+    "build",
+    "api",
+    "v4"
+  ],
+  "author": "Mikhail Yurasov <mikhail@electricimp.com>",
+  "license": "MIT",
+  "readme": "README.md",
+  "bugs": {
+    "url": "https://github.com/electricimp/imp-build-api-v4/issues"
+  },
+  "homepage": "https://github.com/electricimp/imp-build-api-v4",
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "jasmine-expect": "^2.0.2"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "request": "^2.69.0"
+  }
+}
