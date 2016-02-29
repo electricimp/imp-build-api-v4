@@ -4,6 +4,6 @@
 
 'use strict';
 
-exports.build_api_key = '...';
-exports.model_id = '...';
-exports.device_id = '...';
+exports.build_api_key = process.env.IMP_BUILD_API_KEY;
+exports.model_id = process.env.SPEC_CONFIG_MODEL_ID;
+exports.device_id = process.env.SPEC_CONFIG_DEVICE_ID;
