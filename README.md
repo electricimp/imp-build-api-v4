@@ -27,6 +27,10 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+<br />
+
+[![Build Status](https://travis-ci.org/electricimp/imp-build-api-v4.svg?branch=master)](https://travis-ci.org/electricimp/imp-build-api-v4)
+
 # Electric Imp Build API v4 Client
 
 Node.js client for [Build API v4](https://electricimp.com/docs/buildapi/).
@@ -77,51 +81,51 @@ Enables/disables debug output.
 
 ### .restartDevice()
 
-`.restartDevice(deviceId, [name], [modelId)`
+`.restartDevice(deviceId)`
 
 ### .listModels()
 
-`.listModels(deviceId, [name], [modelId])`
+`.listModels([name])`
 
 ### .createModel()
 
-`.createModel(deviceId, [name], [modelId])`
+`.createModel(name)`
 
 ### .deleteModel()
 
-`.deleteModel(deviceId, [name], [modelId])`
+`.deleteModel(modelId)`
 
 ### .getModel()
 
-`.getModel(deviceId, [name], [modelId])`
+`.getModel(modelId)`
 
 ### .updateModel()
 
-`.updateModel(deviceId, [name], [modelId])`
+`.updateModel(modelId, [name])`
 
 ### .restartModel()
 
-`.restartModel(deviceId, [name], [modelId])`
+`.restartModel(modelId)`
 
 ### .listRevisions()
 
-`.listRevisions(deviceId, [name], [modelId])`
+`.listRevisions(modelId, [since], [until], [buildMin], [buildMax])`
 
 ### .createRevision()
 
-`.createRevision(deviceId, [name], [modelId])`
+`.createRevision(modelId, [deviceCode], [agentCode], [releaseNotes])`
 
 ### .getRevision()
 
-`.getRevision(deviceId, [name], [modelId])`
+`.getRevision(modelId, buildNumber)`
 
 ### .getDeviceLogs()
 
-`.getDeviceLogs(deviceId, [name], [modelId])`
+`.getDeviceLogs(deviceId, [since])`
 
 ### .streamDeviceLogs()
 
-`.streamDeviceLogs(deviceId, [name], [modelId])`
+`.streamDeviceLogs(deviceId, callback)`
 
 ## Example
 
