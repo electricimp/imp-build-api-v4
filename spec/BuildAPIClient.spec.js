@@ -195,7 +195,7 @@ describe('BuildAPIClient test suite', () => {
       .then((res) => {
         for (const model of res.models) {
           expect(model.id).not.toBe(newModel.id);
-          expect(model.name).not.toBe(newModel.id);
+          expect(model.name).not.toBe(newModel.name);
         }
       })
       .then(done, done.fail);
