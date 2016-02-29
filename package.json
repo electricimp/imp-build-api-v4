@@ -19,7 +19,6 @@
   ],
   "author": "Mikhail Yurasov <mikhail@electricimp.com>",
   "license": "MIT",
-  "readme": "README.md",
   "bugs": {
     "url": "https://github.com/electricimp/imp-build-api-v4/issues"
   },
