@@ -17,7 +17,6 @@ class BuildAPIClient {
 
   constructor() {
     DebugMixin.call(this);
-
     this.apiKey = null;
     this.apiEndpoint = 'https://build.electricimp.com/v4';
   }
@@ -31,7 +30,7 @@ class BuildAPIClient {
    * @param {{}} headers
    * @returns {Promise}
    */
-  request(method, path, query, headers) {
+  _request(method, path, query, headers) {
     return new Promise((resolve, reject) => {
 
       method = method.toUpperCase();
@@ -128,7 +127,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   listDevices(name, deviceId, modelId) {
-    return this.request('GET', '/devices', {
+    return this._request('GET', '/devices', {
       device_id: deviceId || undefined,
       model_id: modelId || undefined,
       name: name || undefined
@@ -143,7 +142,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   getDevice(deviceId) {
-    return this.request('GET', '/devices/' + deviceId);
+    return this._request('GET', '/devices/' + deviceId);
   }
 
   /**
@@ -157,7 +156,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   updateDevice(deviceId, name, modelId) {
-    return this.request('PUT', '/devices/' + deviceId, {
+    return this._request('PUT', '/devices/' + deviceId, {
       name: name || undefined,
       model_id: modelId || undefined
     });
@@ -171,7 +170,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   restartDevice(deviceId) {
-    return this.request('POST', '/devices/' + deviceId + '/restart');
+    return this._request('POST', '/devices/' + deviceId + '/restart');
   }
 
   /**
@@ -182,7 +181,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   listModels(name) {
-    return this.request('GET', '/models', {
+    return this._request('GET', '/models', {
       name: name || undefined
     });
   }
@@ -195,7 +194,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   createModel(name) {
-    return this.request('POST', '/models', {
+    return this._request('POST', '/models', {
       name
     });
   }
@@ -208,7 +207,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   deleteModel(modelId) {
-    return this.request('DELETE', '/models/' + modelId);
+    return this._request('DELETE', '/models/' + modelId);
   }
 
   /**
@@ -219,7 +218,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   getModel(modelId) {
-    return this.request('GET', '/models/' + modelId);
+    return this._request('GET', '/models/' + modelId);
   }
 
   /**
@@ -232,7 +231,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   updateModel(modelId, name) {
-    return this.request('PUT', '/models/' + modelId, {
+    return this._request('PUT', '/models/' + modelId, {
       name: name || undefined
     });
   }
@@ -245,7 +244,7 @@ class BuildAPIClient {
    * @returns {Promise}
    */
   restartModel(modelId) {
-    return this.request('POST', `/models/${modelId}/restart`);
+    return this._request('POST', `/models/${modelId}/restart`);
   }
 
   /**
@@ -265,7 +264,7 @@ class BuildAPIClient {
     since && (since instanceof Date) && (since = since.toISOString());
     until && (until instanceof Date) && (until = until.toISOString());
 
-    return this.request('GET', '/models/' + modelId + '/revisions', {
+    return this._request('GET', '/models/' + modelId + '/revisions', {
       since: since || undefined,
       until: until || undefined,
       build_min: buildMin || undefined,
@@ -284,7 +283,7 @@ class BuildAPIClient {
    * @returns {Promise}
    */
   createRevision(modelId, deviceCode, agentCode, releaseNotes) {
-    return this.request('POST', `/models/${modelId}/revisions`, {
+    return this._request('POST', `/models/${modelId}/revisions`, {
       device_code: deviceCode || undefined,
       agent_code: agentCode || undefined,
       release_notes: releaseNotes || undefined
@@ -300,7 +299,7 @@ class BuildAPIClient {
    * @return {Promise}
    */
   getRevision(modelId, buildNumber) {
-    return this.request('GET', `/models/${modelId}/revisions/${buildNumber}`);
+    return this._request('GET', `/models/${modelId}/revisions/${buildNumber}`);
   }
 
   /**
@@ -315,7 +314,7 @@ class BuildAPIClient {
   getDeviceLogs(deviceId, since) {
     // convert since to ISO 8601 format
     since && (since instanceof Date) && (since = since.toISOString());
-    return this.request('GET', `/devices/${deviceId}/logs`, {since});
+    return this._request('GET', `/devices/${deviceId}/logs`, {since});
   }
 
   /**
@@ -344,7 +343,7 @@ class BuildAPIClient {
             () => !stop,
             () => {
               return new Promise((resolve, reject) => {
-                this.request('GET', pollUrl)
+                this._request('GET', pollUrl)
                   .then((data) => {
                     stop = !callback(data);
                     resolve(); // next stream request

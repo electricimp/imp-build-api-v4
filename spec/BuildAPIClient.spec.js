@@ -12,6 +12,12 @@ describe('BuildAPIClient test suite', () => {
   let model;
   let revision;
 
+  const delay = (time) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, time);
+    });
+  };
+
   beforeEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
     client = new BuildAPIClient();
@@ -102,16 +108,15 @@ describe('BuildAPIClient test suite', () => {
 
   it('should get device logs', (done) => {
 
-    const since = new Date((new Date()) - 1000 * 60 * 60 /* -1 day */);
+    const since = new Date((new Date()) - 1000 * 60 * 60 /* -1 hr */);
 
-    client.getDeviceLogs(config.device_id, since)
-      .then((body) => {
-        expect(body.logs.length).toBeGreaterThan(0);
-        done();
-      })
-      .catch((error) => {
-        done.fail(error);
-      });
+    delay(2000).then(() =>
+      client.getDeviceLogs(config.device_id, since)
+        .then((body) => {
+          expect(body.logs.length).toBeGreaterThan(0);
+          done();
+        }, done.fail)
+    );
 
   });
 
@@ -171,12 +176,6 @@ describe('BuildAPIClient test suite', () => {
     let newModelName = 'model_'
                        + parseInt(Math.random() * 1e6).toString()
                        + parseInt(Math.random() * 1e6).toString();
-
-    const delay = (time) => {
-      return new Promise((resolve, reject) => {
-        setTimeout(resolve, time);
-      });
-    };
 
     client.createModel(newModelName)
       .then((res) => {
