@@ -1,6 +1,6 @@
 {
   "name": "imp-build-api-v4",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Electric Imp Build API v4 Client",
   "main": "src/index.js",
   "scripts": {
@@ -19,7 +19,6 @@
   ],
   "author": "Mikhail Yurasov <mikhail@electricimp.com>",
   "license": "MIT",
-  "readme": "README.md",
   "bugs": {
     "url": "https://github.com/electricimp/imp-build-api-v4/issues"
   },
