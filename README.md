@@ -27,6 +27,10 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+<br />
+
+[![Build Status](https://travis-ci.org/electricimp/imp-build-api-v4.svg?branch=master)](https://travis-ci.org/electricimp/imp-build-api-v4)
+
 # Electric Imp Build API v4 Client
 
 Node.js client for [Build API v4](https://electricimp.com/docs/buildapi/).
