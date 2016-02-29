@@ -40,7 +40,7 @@ This package deprecates https://www.npmjs.com/package/imp-api.
 ## Installation
 
 ```bash
-npm i -g imp-build-api-v4
+npm i --save imp-build-api-v4
 ```
 
 Node.js 4.0+ is required.
