@@ -1,6 +1,5 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
+| :warning: The Electric Imp’s Build API is not supported anymore. Please use [impCentral™ API](https://apidoc.electricimp.com) and impCentral™ API JavaScript [Library](https://github.com/electricimp/imp-central-api) instead. |
+| --- |
 
 - [Electric Imp Build API v4 Client](#electric-imp-build-api-v4-client)
   - [Installation](#installation)
